@@ -2,17 +2,25 @@ using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
 {
-    [SerializeField] private GameObject Enemy;
+    //[SerializeField] private GameObject Enemy;
+    [SerializeField] private Enemy Enemy;
 
     private Animator animator;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        animator.SetBool("IsWalking", Enemy.GetComponent<Enemy>().IsWalking());
+        animator.SetBool("IsWalking", Enemy.IsWalking());
     }
     private void Update()
     {
-        animator.SetBool("IsWalking", Enemy.GetComponent<Enemy>().IsWalking());
+        if (Enemy.InAttackingRange())
+        {
+            animator.SetBool("IsAttacking", Enemy.IsAttacking());
+        }
+        else
+        {
+            animator.SetBool("IsWalking", Enemy.IsWalking());
+        }
     }
 }

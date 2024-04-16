@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private bool isWalking = false;
     private Vector3 playerPosition;
     private Vector3 enemyPosition;
-    private float attackRange = 1.75f;
+    private float attackRange = 2f;
     private bool isAttacking = false;
     private bool randomSide;
 
@@ -85,8 +85,22 @@ public class Enemy : MonoBehaviour
         return isWalking;
     }
 
+    public bool IsAttacking()
+    {
+        return isAttacking;
+    }
+    public bool InAttackingRange()
+    {
+        return Vector3.Distance(playerPosition, enemyPosition) <= attackRange;
+    }
+
     public void SetIsWalking(bool walking)
     {
         isWalking = walking;
+    }
+
+    public void SetIsAttacking(bool attacking)
+    {
+        isAttacking = attacking;
     }
 }
