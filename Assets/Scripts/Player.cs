@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -6,11 +7,19 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     public static Player Instance { get; private set; } //Singleton
     private bool isWalking;
+    private float health;
+    private float maxHealth = 100f;
+
+    public event EventHandler OnPlayerDeath;
 
     private void Awake()
     {
         if (Instance != null) Destroy(gameObject); //there is already a player instance
         else Instance = this;
+    }
+    private void Start()
+    {
+        health = maxHealth;
     }
 
     private void Update()
@@ -70,5 +79,14 @@ public class Player : MonoBehaviour
         return isWalking;
     }
 
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0) Die();
+    }
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
 
 }

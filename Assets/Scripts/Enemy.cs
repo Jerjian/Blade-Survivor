@@ -1,4 +1,5 @@
 using Cinemachine.Utility;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,16 +15,20 @@ public class Enemy : MonoBehaviour
     private bool isAttacking = false;
     private bool randomSide;
 
+    public event EventHandler OnAttack;
+    public event EventHandler OnWalking;
+
+
 
     private void Awake()
     {
         isWalking = false;
-        randomSide = Random.Range(0, 2) == 0;
+        randomSide = UnityEngine.Random.Range(0, 2) == 0;
         player = GameObject.FindGameObjectWithTag("Player");
     }
     private void Update()
     {
-        playerPosition = player.transform.position;
+        if (player) playerPosition = player.transform.position;
         enemyPosition = transform.position;
         HandleMovement();
     }
@@ -62,6 +67,8 @@ public class Enemy : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(playerPosition, enemyPosition);
         if (distanceToPlayer <= attackRange)
         {
+            if (OnAttack != null) OnAttack(this, EventArgs.Empty); //fire Attack event
+
             isAttacking = true;
             isWalking = false;
         }
@@ -71,6 +78,7 @@ public class Enemy : MonoBehaviour
         {
             isWalking = true;
             transform.position += moveDir * moveSpeed * Time.deltaTime;
+            if (OnWalking != null) OnWalking(this, EventArgs.Empty); //fire Walking event
         }
         else isWalking = false;
 
@@ -107,4 +115,5 @@ public class Enemy : MonoBehaviour
     {
         return attackRange;
     }
+
 }
