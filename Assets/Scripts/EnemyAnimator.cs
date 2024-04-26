@@ -20,6 +20,7 @@ public class EnemyAnimator : MonoBehaviour
         }
         else
         {
+            animator.SetBool("IsAttacking", Enemy.IsAttacking());
             animator.SetBool("IsWalking", Enemy.IsWalking());
         }
     }

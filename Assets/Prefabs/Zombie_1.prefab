@@ -1031,6 +1031,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2291376803917500013}
+  - component: {fileID: 8078314043014760994}
   m_Layer: 0
   m_Name: LeftHand
   m_TagString: Untagged
@@ -1055,6 +1056,27 @@ Transform:
   - {fileID: 7223012142762940606}
   m_Father: {fileID: 937073184724465992}
   m_LocalEulerAnglesHint: {x: 3.600315, y: -92.44682, z: 3.0444217}
+--- !u!65 &8078314043014760994
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958837390847971948}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.0092085, y: 0.01186066, z: 0.006413077}
+  m_Center: {x: 0, y: 0.005, z: 0}
 --- !u!1 &4001318326344907824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,6 +1536,7 @@ GameObject:
   - component: {fileID: 5438200601578209971}
   - component: {fileID: 6006536360913645000}
   - component: {fileID: 2719286361426442465}
+  - component: {fileID: 127929121494338382}
   m_Layer: 0
   m_Name: Zombie_1
   m_TagString: Untagged
@@ -1599,6 +1622,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &127929121494338382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7036246691076511508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27449603f69fa44b9deb3d319be3cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHand: {fileID: 7827445527775811063}
+  leftHand: {fileID: 3958837390847971948}
 --- !u!1 &7442151772671458738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,6 +1741,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2969353936121853369}
+  - component: {fileID: 3131106332018280110}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -1728,6 +1766,27 @@ Transform:
   - {fileID: 2329127286305924811}
   m_Father: {fileID: 1676564356709804997}
   m_LocalEulerAnglesHint: {x: -0.3731301, y: -18.947277, z: 3.993937}
+--- !u!65 &3131106332018280110
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7827445527775811063}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.0092085, y: 0.011860659, z: 0.0064130775}
+  m_Center: {x: 0.00005204464, y: 0.0054952353, z: -0.000022428507}
 --- !u!1 &7951088199527211250
 GameObject:
   m_ObjectHideFlags: 0

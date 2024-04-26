@@ -103,4 +103,8 @@ public class Enemy : MonoBehaviour
     {
         isAttacking = attacking;
     }
+    public float GetAttackRange()
+    {
+        return attackRange;
+    }
 }
