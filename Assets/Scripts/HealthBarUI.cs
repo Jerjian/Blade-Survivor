@@ -10,16 +10,8 @@ public class HealthBarUI : MonoBehaviour
     {
         player.OnHealthChanged += HandleHealthChanged_OnHealthChanged;
     }
-
-    private void Update()
-    {
-
-    }
-
     private void HandleHealthChanged_OnHealthChanged(object sender, float e)
     {
         barImage.fillAmount = player.Health / player.MaxHealth;
     }
-
-
 }
