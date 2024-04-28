@@ -11,6 +11,7 @@ public class EnemyAttack : MonoBehaviour
     private float attackRange;
     private BoxCollider rightHandCollider;
     private BoxCollider leftHandCollider;
+    private int damage;
 
     public event EventHandler OnPlayerHit;
 
@@ -28,17 +29,19 @@ public class EnemyAttack : MonoBehaviour
         rightHandCollider = rightHand.GetComponent<BoxCollider>();
         leftHandCollider = leftHand.GetComponent<BoxCollider>();
 
-
+        damage = 10;
     }
 
     private void HandleAttack_OnAttack(object sender, System.EventArgs e)
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.27f && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.63f)
+        float animationTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1;
+
+        if (animationTime > 0.27f && animationTime < 0.63f)
         {
             leftHandCollider.enabled = true;
             rightHandCollider.enabled = false;
         }
-        else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.63f)
+        else if (animationTime > 0.63f)
         {
             rightHandCollider.enabled = true;
             leftHandCollider.enabled = false;
@@ -53,13 +56,13 @@ public class EnemyAttack : MonoBehaviour
     private void PrintPlayerHit_OnPlayerHit(object sender, System.EventArgs e)
     {
         Debug.Log("Player Hit");
-        player.TakeDamage(10);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            player.TakeDamage(damage);
             if (OnPlayerHit != null) OnPlayerHit(this, EventArgs.Empty); //fire event OnPlayerHit
         }
     }

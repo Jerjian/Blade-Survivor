@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private GameObject player;
+    private GameObject PlayerGO;
     [SerializeField] private float moveSpeed = 7f;
 
     private bool isWalking = false;
@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     public event EventHandler OnAttack;
     public event EventHandler OnWalking;
+    public event EventHandler OnIdle;
 
 
 
@@ -24,26 +25,35 @@ public class Enemy : MonoBehaviour
     {
         isWalking = false;
         randomSide = UnityEngine.Random.Range(0, 2) == 0;
-        player = GameObject.FindGameObjectWithTag("Player");
+        PlayerGO = GameObject.FindGameObjectWithTag("Player");
     }
     private void Update()
     {
-        if (player) playerPosition = player.transform.position;
+        //Debug.Log("Enemy Update");
+        if (PlayerGO) playerPosition = PlayerGO.transform.position;
         enemyPosition = transform.position;
-        HandleMovement();
+        float distanceToPlayer = Vector3.Distance(playerPosition, enemyPosition);
+
+        if (PlayerGO != null)
+        {
+            //Debug.Log(PlayerGO);
+            //Debug.Log(distanceToPlayer > attackRange);
+            if (distanceToPlayer > attackRange) HandleMovement();
+            else HandleAttack();
+        }
+        //else HandleIdle();
     }
     private void HandleMovement()
     {
         Vector3 moveDir = playerPosition - enemyPosition;
         moveDir = moveDir.normalized;
 
-        bool canMove = !Physics.BoxCast(transform.position, Vector3.one * attackRange / 2, moveDir, Quaternion.identity, moveSpeed * Time.deltaTime);
-
+        bool canMove = !Physics.CapsuleCast(transform.position, PlayerGO.transform.position, GetComponent<CapsuleCollider>().radius, moveDir);
         if (!canMove)
         {
             //Randomize the side the Enemy will move to if it can't move towards player on the X axis
             Vector3 moveDirX = randomSide ? new Vector3(moveDir.x, 0f, 0f).normalized.Abs() : -new Vector3(moveDir.x, 0f, 0f).normalized.Abs();
-            canMove = !Physics.BoxCast(transform.position, Vector3.one * attackRange / 2, moveDirX, Quaternion.identity, moveSpeed * Time.deltaTime);
+            canMove = !Physics.CapsuleCast(transform.position, PlayerGO.transform.position, GetComponent<CapsuleCollider>().radius, moveDir);
             if (canMove)
             {
                 moveDir = moveDirX;
@@ -53,7 +63,7 @@ public class Enemy : MonoBehaviour
             {
                 //Randomize the side the enemy will move to if it can't move towards the player on the Z axis
                 Vector3 moveDirZ = randomSide ? new Vector3(0f, 0f, moveDir.z).normalized.Abs() : -new Vector3(0f, 0f, moveDir.z).normalized.Abs();
-                canMove = !Physics.BoxCast(transform.position, Vector3.one * attackRange / 2, moveDirZ, Quaternion.identity, moveSpeed * Time.deltaTime);
+                canMove = !Physics.CapsuleCast(transform.position, PlayerGO.transform.position, GetComponent<CapsuleCollider>().radius, moveDir);
 
                 if (canMove)
                 {
@@ -63,26 +73,24 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        isWalking = true;
+        transform.position += moveDir * moveSpeed * Time.deltaTime;
+        if (OnWalking != null) OnWalking(this, EventArgs.Empty); //fire Walking event
 
-        float distanceToPlayer = Vector3.Distance(playerPosition, enemyPosition);
-        if (distanceToPlayer <= attackRange)
-        {
-            if (OnAttack != null) OnAttack(this, EventArgs.Empty); //fire Attack event
+        HandleRotation();
+    }
 
-            isAttacking = true;
-            isWalking = false;
-        }
-        else isAttacking = false;
+    private void HandleAttack()
+    {
+        isAttacking = true;
+        isWalking = false;
+        if (OnAttack != null) OnAttack(this, EventArgs.Empty); //fire Attack event
+    }
 
-        if (canMove && !isAttacking)
-        {
-            isWalking = true;
-            transform.position += moveDir * moveSpeed * Time.deltaTime;
-            if (OnWalking != null) OnWalking(this, EventArgs.Empty); //fire Walking event
-        }
-        else isWalking = false;
 
-        //Rotate enemy
+
+    private void HandleRotation()
+    {
         float rotationSpeed = 10f;
         Vector3 playerDir = (playerPosition - enemyPosition).normalized;
         transform.forward = Vector3.Slerp(transform.forward, playerDir, Time.deltaTime * rotationSpeed);

@@ -9,8 +9,13 @@ public class Player : MonoBehaviour
     private bool isWalking;
     private float health;
     private float maxHealth = 100f;
+    private bool isDead;
 
     public event EventHandler OnPlayerDeath;
+    public event EventHandler<float> OnHealthChanged; //Incase I need it later (add red border or green border)
+
+
+
 
     private void Awake()
     {
@@ -20,6 +25,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
+        isDead = false;
     }
 
     private void Update()
@@ -81,11 +87,35 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        HealthChanged(-damage);
+    }
+
+    public void Heal(int amount)
+    {
+        HealthChanged(amount);
+    }
+
+    public void HealthChanged(int amount)
+    {
+        health += amount;
+        if (health > maxHealth) health = maxHealth;
+        if (OnHealthChanged != null) OnHealthChanged(this, amount);
         if (health <= 0) Die();
+    }
+
+    public float MaxHealth
+    {
+        get { return maxHealth; }
+    }
+
+    public float Health
+    {
+        get { return health; }
     }
     private void Die()
     {
+        isDead = true;
+        if (OnPlayerDeath != null) OnPlayerDeath(this, EventArgs.Empty);
         Destroy(gameObject);
     }
 
