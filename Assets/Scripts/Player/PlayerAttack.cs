@@ -10,12 +10,15 @@ public class PlayerAttack : MonoBehaviour
     public event EventHandler OnPlayerAttack;
     private bool canAttack = true;
 
+    private BoxCollider swordCollider;
+
 
 
     private void Start()
     {
         OnPlayerAttack += PlayerAttack_OnPlayerAttack;
         sword = GetComponentInChildren<Sword>();
+        swordCollider = sword.GetComponent<BoxCollider>();
     }
 
     private void Update()

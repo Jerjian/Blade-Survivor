@@ -1524,6 +1524,50 @@ Transform:
   - {fileID: 4577777764646830779}
   m_Father: {fileID: 2329127286305924811}
   m_LocalEulerAnglesHint: {x: -65.36933, y: 46.403423, z: -76.31529}
+--- !u!1 &6798004389997049464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6062605290081965079}
+  - component: {fileID: 930395113688643774}
+  m_Layer: 0
+  m_Name: EnemyTopPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6062605290081965079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798004389997049464}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7705119898519883182}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &930395113688643774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798004389997049464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab9e60211b401e408bb78840b60a6f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7036246691076511508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,13 +1577,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7705119898519883182}
-  - component: {fileID: 5438200601578209971}
   - component: {fileID: 6006536360913645000}
   - component: {fileID: 2719286361426442465}
   - component: {fileID: 127929121494338382}
+  - component: {fileID: 3965859453413244478}
   m_Layer: 0
   m_Name: Zombie_1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1559,29 +1603,9 @@ Transform:
   m_Children:
   - {fileID: 3439771382909060144}
   - {fileID: 873512233717906580}
+  - {fileID: 6062605290081965079}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5438200601578209971
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7036246691076511508}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.69053173, y: 4.2999077, z: 0.49543428}
-  m_Center: {x: 0.016251633, y: 1.649954, z: 0.058879066}
 --- !u!114 &6006536360913645000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1620,7 +1644,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &127929121494338382
 MonoBehaviour:
@@ -1636,6 +1660,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightHand: {fileID: 7827445527775811063}
   leftHand: {fileID: 3958837390847971948}
+--- !u!136 &3965859453413244478
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7036246691076511508}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.52
+  m_Height: 4.62
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.81, z: 0}
 --- !u!1 &7442151772671458738
 GameObject:
   m_ObjectHideFlags: 0
