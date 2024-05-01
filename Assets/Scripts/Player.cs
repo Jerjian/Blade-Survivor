@@ -14,9 +14,6 @@ public class Player : MonoBehaviour
     public event EventHandler OnPlayerDeath;
     public event EventHandler<float> OnHealthChanged; //Incase I need it later (add red border or green border)
 
-
-
-
     private void Awake()
     {
         if (Instance != null) Destroy(gameObject); //there is already a player instance

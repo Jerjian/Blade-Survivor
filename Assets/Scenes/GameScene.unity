@@ -302,7 +302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.53827304, y: -0.0000000072505153, z: 0.0000000046308655,
+  m_LocalRotation: {x: 0.53827304, y: 0.0000000072505157, z: -0.0000000046308655,
     w: 0.8427705}
   m_LocalPosition: {x: -8.4, y: 43.15, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 363737402}
   - component: {fileID: 363737403}
   - component: {fileID: 363737404}
+  - component: {fileID: 363737405}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -424,7 +425,7 @@ Transform:
   - {fileID: 135641130}
   - {fileID: 1523818284}
   - {fileID: 1872420454}
-  - {fileID: 1137056176}
+  - {fileID: 870274813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &363737402
@@ -476,6 +477,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58f39a945f5a2348bb352733ed39023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &363737405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363737400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4387d7ec56705c54eba27ec5a6f85c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameInput: {fileID: 172740420}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,94 +696,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 714858350}
   m_SourcePrefab: {fileID: 100100000, guid: d8546bff7f0945b44b805dcafa9eb92a, type: 3}
---- !u!1001 &713304170
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1137056176}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: e9b939b9211a4e04bbabb670334230b3,
-        type: 3}
-      propertyPath: m_Name
-      value: KendoSwordVisual
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e9b939b9211a4e04bbabb670334230b3, type: 3}
---- !u!4 &713304171 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e9b939b9211a4e04bbabb670334230b3,
+--- !u!1 &542599819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6255973300926673019, guid: 95e62340dc85ece44bf39441e1f793f4,
     type: 3}
-  m_PrefabInstance: {fileID: 713304170}
+  m_PrefabInstance: {fileID: 870274812}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &714858344 stripped
 GameObject:
@@ -1075,6 +1006,97 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841062141}
   m_CullTransparentMesh: 1
+--- !u!1001 &870274812
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 363737401}
+    m_Modifications:
+    - target: {fileID: 2292295136895464548, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292295136895464548, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292295136895464548, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292295136895464548, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6969976
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292295136895464548, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.11914005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292295136895464548, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6969976
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292295136895464548, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.11914005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292295136895464548, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292295136895464548, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292295136895464548, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -340.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255973300926673019, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      propertyPath: m_Name
+      value: KendoSword
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6255973300926673019, guid: 95e62340dc85ece44bf39441e1f793f4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 870274817}
+  m_SourcePrefab: {fileID: 100100000, guid: 95e62340dc85ece44bf39441e1f793f4, type: 3}
+--- !u!4 &870274813 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2292295136895464548, guid: 95e62340dc85ece44bf39441e1f793f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 870274812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &870274817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542599819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097c37b00a9c82440a4ccb93a92cf0fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordData: {fileID: 11400000, guid: 0498058e71e4da3448c5790b6d5a46d1, type: 2}
 --- !u!1 &1090284172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,60 +1180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 363737402}
---- !u!1 &1137056175
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1137056176}
-  - component: {fileID: 1137056177}
-  m_Layer: 0
-  m_Name: KendoSword
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1137056176
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137056175}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.5460134, y: -0.4492987, z: 0.5460134, w: 0.4492987}
-  m_LocalPosition: {x: 0, y: 4.04, z: 0.05}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 713304171}
-  m_Father: {fileID: 363737401}
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: -258.9}
---- !u!65 &1137056177
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137056175}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.5389106, y: 0.658714, z: 0.51143837}
-  m_Center: {x: -0.079257734, y: 0.027191324, z: -0.0044355392}
 --- !u!1 &1268083593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,7 +1244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268083593}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.53827304, y: -0.0000000072505153, z: 0.0000000046308655,
+  m_LocalRotation: {x: 0.53827304, y: 0.0000000072505157, z: -0.0000000046308655,
     w: 0.8427705}
   m_LocalPosition: {x: -8.4, y: 43.15, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}

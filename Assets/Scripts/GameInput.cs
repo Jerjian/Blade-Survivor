@@ -18,4 +18,9 @@ public class GameInput : MonoBehaviour
         inputVector = inputVector.normalized;
         return inputVector;
     }
+
+    public bool GetAttackInput()
+    {
+        return playerInputActions.Player.Attack.triggered;
+    }
 }

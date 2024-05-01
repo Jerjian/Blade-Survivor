@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
 {
-    //[SerializeField] private GameObject Enemy;
     [SerializeField] private Enemy Enemy;
     private Player Player;
-    private Animator animator;
+    private Animator enemyAnimator;
 
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        animator = GetComponent<Animator>();
+        enemyAnimator = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -22,18 +21,18 @@ public class EnemyAnimator : MonoBehaviour
 
     private void HandleIdleAnimation_OnPlayerDeath(object sender, System.EventArgs e)
     {
-        animator.SetTrigger("IsIdle");
+        enemyAnimator.SetTrigger("IsIdle");
     }
     private void HandleAttackAnimation_OnAttack(object sender, System.EventArgs e)
     {
-        animator.SetTrigger("IsAttacking");
+        enemyAnimator.SetTrigger("IsAttacking");
     }
     private void HandleWalkingAnimation_OnWalking(object sender, System.EventArgs e)
     {
-        animator.SetTrigger("IsWalking");
+        enemyAnimator.SetTrigger("IsWalking");
     }
     private void HandleIdleAnimation_OnIdle(object sender, System.EventArgs e)
     {
-        animator.SetTrigger("IsIdle");
+        enemyAnimator.SetTrigger("IsIdle");
     }
 }
