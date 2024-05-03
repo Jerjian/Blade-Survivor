@@ -3,7 +3,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamagable
 {
     private GameObject PlayerGO;
     [SerializeField] private float moveSpeed = 7f;
@@ -18,8 +18,7 @@ public class Enemy : MonoBehaviour
     public event EventHandler OnAttack;
     public event EventHandler OnWalking;
     public event EventHandler OnIdle;
-
-
+    public event EventHandler<float> OnHealthChanged;
 
     private void Awake()
     {
