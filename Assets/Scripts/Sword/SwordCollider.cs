@@ -32,15 +32,16 @@ public class SwordCollider : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            //Enemy takes damage
             other.GetComponent<Enemy>().TakeDamage(sword.GetSwordData().damage);
         }
     }
 
     IEnumerator EnableBoxColliderTimer(float cooldown)
     {
+        float swordRaiseTime = 0.2f; //todo: make this dynamic
+        yield return new WaitForSeconds(swordRaiseTime);
         swordCollider.enabled = true;
-        yield return new WaitForSeconds(cooldown);
+        yield return new WaitForSeconds(cooldown - swordRaiseTime);
         swordCollider.enabled = false;
     }
 }
