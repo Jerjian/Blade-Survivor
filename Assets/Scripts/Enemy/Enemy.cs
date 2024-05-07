@@ -1,30 +1,39 @@
 using Cinemachine.Utility;
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
-    private GameObject PlayerGO;
     [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float health;
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float attackRange = 2f;
 
+
+    private GameObject PlayerGO;
     private bool isWalking = false;
     private Vector3 playerPosition;
     private Vector3 enemyPosition;
-    private float attackRange = 2f;
     private bool isAttacking = false;
     private bool randomSide;
+    private bool isDead;
+    private bool canBeDamaged = true;
+
 
     public event EventHandler OnAttack;
     public event EventHandler OnWalking;
     public event EventHandler OnIdle;
     public event EventHandler<float> OnHealthChanged;
+    public event EventHandler OnEnemyDeath;
 
     private void Awake()
     {
         isWalking = false;
         randomSide = UnityEngine.Random.Range(0, 2) == 0;
         PlayerGO = GameObject.FindGameObjectWithTag("Player");
+        health = maxHealth;
     }
     private void Update()
     {
@@ -99,6 +108,34 @@ public class Enemy : MonoBehaviour, IDamagable
         transform.forward = Vector3.Slerp(transform.forward, playerDir, Time.deltaTime * rotationSpeed);
     }
 
+    public void TakeDamage(float damage)
+    {
+        if (canBeDamaged)
+        {
+            HealthChanged(-damage);
+            StartCoroutine(CanBeDamagedCooldown(1f)); //todo: make this sword damage cooldown 
+        }
+    }
+
+    public void Heal(float amount)
+    {
+        HealthChanged(amount);
+    }
+
+    public void HealthChanged(float amount)
+    {
+        health += amount;
+        if (health > maxHealth) health = maxHealth;
+        if (OnHealthChanged != null) OnHealthChanged(this, amount);
+        if (health <= 0) Die();
+    }
+    private void Die()
+    {
+        isDead = true;
+        if (OnEnemyDeath != null) OnEnemyDeath(this, EventArgs.Empty);
+        Destroy(gameObject);
+    }
+
     public bool IsWalking()
     {
         return isWalking;
@@ -126,5 +163,13 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         return attackRange;
     }
+
+    IEnumerator CanBeDamagedCooldown(float cooldown)
+    {
+        canBeDamaged = false;
+        yield return new WaitForSeconds(cooldown);
+        canBeDamaged = true;
+    }
+
 
 }

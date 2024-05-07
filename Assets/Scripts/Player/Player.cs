@@ -82,17 +82,17 @@ public class Player : MonoBehaviour, IDamagable
         return isWalking;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         HealthChanged(-damage);
     }
 
-    public void Heal(int amount)
+    public void Heal(float amount)
     {
         HealthChanged(amount);
     }
 
-    public void HealthChanged(int amount)
+    public void HealthChanged(float amount)
     {
         health += amount;
         if (health > maxHealth) health = maxHealth;

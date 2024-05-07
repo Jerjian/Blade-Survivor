@@ -53,9 +53,9 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    //todo: do the OnPlayerHit event 
     private void PrintPlayerHit_OnPlayerHit(object sender, System.EventArgs e)
     {
-        Debug.Log("Player Hit");
     }
 
     private void OnTriggerEnter(Collider other)

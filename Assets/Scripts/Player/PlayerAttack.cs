@@ -13,12 +13,15 @@ public class PlayerAttack : MonoBehaviour
     private BoxCollider swordCollider;
 
 
+    private void Awake()
+    {
+        sword = GetComponentInChildren<Sword>();
+        swordCollider = sword.GetComponent<BoxCollider>();
+    }
 
     private void Start()
     {
         OnPlayerAttack += PlayerAttack_OnPlayerAttack;
-        sword = GetComponentInChildren<Sword>();
-        swordCollider = sword.GetComponent<BoxCollider>();
     }
 
     private void Update()
